@@ -6,18 +6,15 @@
  */
 
 import Navigator from './src/navigation/Navigator';
-  
+
 import { NavigationContainer } from '@react-navigation/native';
 
 function App() {
-
   return (
     <NavigationContainer>
-        <Navigator actual="CustomCheckbox" />
-      </NavigationContainer> 
+      <Navigator actual="CustomCheckbox" />
+    </NavigationContainer>
   );
 }
-
-
 
 export default App;

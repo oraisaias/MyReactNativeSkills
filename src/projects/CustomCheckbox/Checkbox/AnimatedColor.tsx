@@ -7,7 +7,7 @@ import Animated, {
   useAnimatedProps,
 } from 'react-native-reanimated';
 import { Path } from 'react-native-svg';
-import { Box_Path } from '../../data/Data';
+import { Box_Path } from '../Data';
 
 interface AnimatedColorProps {
   progress: SharedValue<number>;

@@ -2,6 +2,7 @@ import { memo } from 'react';
 import { useDerivedValue, withTiming } from 'react-native-reanimated';
 import Svg from 'react-native-svg';
 import AnimatedColor from './AnimatedColor';
+import AnimatedCheckmark from './AnimatedCheckmark';
 
 interface CheckboxProps {
   checked: boolean;
@@ -35,6 +36,10 @@ const Checkbox = memo(
           uncheckedBorderColor={uncheckedBorderColor}
           checkedBackgroundColor={checkedBackgroundColor}
           uncheckedBackgroundColor={uncheckedBackgroundColor}
+        />
+        <AnimatedCheckmark
+          progress={progress}
+          checkmarkColor="white"
         />
       </Svg>
     );
