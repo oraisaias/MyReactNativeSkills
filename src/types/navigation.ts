@@ -1,6 +1,6 @@
 export type RootStackParamList = {
+  Navigator: { name: string };
   Home: undefined;
-  Profile: { name: string };
 };
 
 declare global {
