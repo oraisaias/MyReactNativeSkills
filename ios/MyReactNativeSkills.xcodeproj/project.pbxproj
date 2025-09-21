@@ -12,6 +12,7 @@
 		761780ED2CA45674006654EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761780EC2CA45674006654EE /* AppDelegate.swift */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		8C43EB5CC8822C7B2C553857 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */; };
+		C57318C72E80905900882069 /* RCTNativeLocalStorage.mm in Sources */ = {isa = PBXBuildFile; fileRef = C57318C62E80905900882069 /* RCTNativeLocalStorage.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,9 @@
 		5DCACB8F33CDC322A6C60F78 /* libPods-MyReactNativeSkills.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MyReactNativeSkills.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		761780EC2CA45674006654EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = MyReactNativeSkills/AppDelegate.swift; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = MyReactNativeSkills/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C57318C42E80905800882069 /* MyReactNativeSkills-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MyReactNativeSkills-Bridging-Header.h"; sourceTree = "<group>"; };
+		C57318C52E80905900882069 /* RCTNativeLocalStorage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCTNativeLocalStorage.h; sourceTree = "<group>"; };
+		C57318C62E80905900882069 /* RCTNativeLocalStorage.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = RCTNativeLocalStorage.mm; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -70,6 +74,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				C57318C32E80900800882069 /* NativeLocalStorage */,
 				13B07FAE1A68108700A75B9A /* MyReactNativeSkills */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				83CBBA001A601CBA00E9B192 /* Products */,
@@ -96,6 +101,16 @@
 				5709B34CF0A7D63546082F79 /* Pods-MyReactNativeSkills.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		C57318C32E80900800882069 /* NativeLocalStorage */ = {
+			isa = PBXGroup;
+			children = (
+				C57318C52E80905900882069 /* RCTNativeLocalStorage.h */,
+				C57318C62E80905900882069 /* RCTNativeLocalStorage.mm */,
+				C57318C42E80905800882069 /* MyReactNativeSkills-Bridging-Header.h */,
+			);
+			path = NativeLocalStorage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -131,7 +146,7 @@
 				LastUpgradeCheck = 1210;
 				TargetAttributes = {
 					13B07F861A680F5B00A75B9A = {
-						LastSwiftMigration = 1120;
+						LastSwiftMigration = 1630;
 					};
 				};
 			};
@@ -191,13 +206,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MyReactNativeSkills/Pods-MyReactNativeSkills-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MyReactNativeSkills/Pods-MyReactNativeSkills-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -234,13 +245,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MyReactNativeSkills/Pods-MyReactNativeSkills-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MyReactNativeSkills/Pods-MyReactNativeSkills-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -254,6 +261,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C57318C72E80905900882069 /* RCTNativeLocalStorage.mm in Sources */,
 				761780ED2CA45674006654EE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -285,6 +293,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.isaiaschavez.--PRODUCT-NAME-rfc1034identifier-";
 				"PRODUCT_BUNDLE_IDENTIFIER[sdk=iphoneos*]" = org.isaiaschavez.MyReactNativeSkills;
 				PRODUCT_NAME = MyReactNativeSkills;
+				SWIFT_OBJC_BRIDGING_HEADER = "NativeLocalStorage/MyReactNativeSkills-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -314,6 +323,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.isaiaschavez.--PRODUCT-NAME-rfc1034identifier-";
 				"PRODUCT_BUNDLE_IDENTIFIER[sdk=iphoneos*]" = org.isaiaschavez.MyReactNativeSkills;
 				PRODUCT_NAME = MyReactNativeSkills;
+				SWIFT_OBJC_BRIDGING_HEADER = "NativeLocalStorage/MyReactNativeSkills-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
