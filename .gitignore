@@ -1,7 +1,8 @@
 # OSX
 #
 .DS_Store
-
+ios/MyReactNativeSkills/Images.xcassets
+ios/GoogleService-Info.plist
 # Xcode
 #
 build/

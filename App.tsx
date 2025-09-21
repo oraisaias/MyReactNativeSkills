@@ -11,7 +11,6 @@ import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { View } from 'react-native';
 import { Text } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { useState } from 'react';
 
 const HomeScreen = () => {
   const navigation = useNavigation();
