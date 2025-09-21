@@ -2,6 +2,7 @@
 #
 .DS_Store
 ios/GoogleService-Info.plist
+ios/MyReactNativeSkills/Images.xcassets/AppIcon.appiconset
 # Xcode
 #
 build/
