@@ -1,6 +1,11 @@
 export type RootStackParamList = {
   Home: undefined;
-  Profile: { name: string };
+  Navigator: { name: string };
+  RealmApp: undefined;
+};
+export type RealmAppStackParamList = {
+  Start: undefined;
+  Data: undefined;
 };
 
 declare global {

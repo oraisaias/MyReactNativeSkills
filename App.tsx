@@ -11,16 +11,29 @@ import { RootStackParamList } from './src/types/navigation';
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { StyleSheet, View } from 'react-native';
 import { Text } from 'react-native';
-import { createStackNavigator, StackNavigationProp } from '@react-navigation/stack';
+import {
+  createStackNavigator,
+  StackNavigationProp,
+} from '@react-navigation/stack';
 
 const HomeScreen = () => {
-  const navigation = useNavigation<StackNavigationProp<RootStackParamList, 'Home'>>();
+  const navigation =
+    useNavigation<StackNavigationProp<RootStackParamList, 'Home'>>();
+
   return (
     <View style={styles.container}>
-      
-      <Text style={styles.item  } onPress={() => navigation.navigate('Profile', { name: 'CustomCheckbox' })}>CustomCheckbox</Text>
-      <Text style={styles.item} onPress={() => navigation.navigate('Profile', { name: 'CustomCheckbox' })}>CustomCheckbox</Text>
-    </View> 
+      <Text
+        style={styles.item}
+        onPress={() =>
+          navigation.navigate('Navigator', { name: 'CustomCheckbox' })
+        }
+      >
+        CustomCheckbox
+      </Text>
+      <Text style={styles.item} onPress={() => navigation.navigate('Navigator', { name: 'RealmApp' })}>
+        RealmApp
+      </Text>
+    </View>
   );
 };
 
@@ -30,12 +43,11 @@ function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Profile" component={Navigator} />
-      </Stack.Navigator>    
+        <Stack.Screen name="Navigator" options={{ headerShown: false }} component={Navigator} />
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }
-
 
 const styles = StyleSheet.create({
   container: {
@@ -43,10 +55,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  item:{
-    marginVertical:10,
-    padding:10
-  }
+  item: {
+    marginVertical: 10,
+    padding: 10,
+  },
 });
 
 export default App;
