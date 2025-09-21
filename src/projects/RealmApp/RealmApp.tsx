@@ -3,16 +3,49 @@ import { RealmProvider } from '@realm/react';
 import { createStackNavigator } from '@react-navigation/stack';
 import Home from './screens/Home';
 import DataScreen from './screens/DataScreen';
-const Stack = createStackNavigator();
+import Task from './models/Task';
+import { RealmAppStackParamList } from './types/navigation';
 
-
+const Stack = createStackNavigator<RealmAppStackParamList>();
 
 const RealmApp = () => {
   return (
-    <RealmProvider>
-      <Stack.Navigator>
-        <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="Data" options={{ headerBackTitle: 'Back' }} component={DataScreen} />
+    <RealmProvider schema={[Task]}>
+      <Stack.Navigator
+        screenOptions={{
+          headerStyle: {
+            backgroundColor: '#007AFF',
+          },
+          headerTintColor: '#fff',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+        }}
+      >
+        <Stack.Screen 
+          name="TaskList" 
+          component={Home}
+          options={{ 
+            title: 'TODO App',
+            headerShown: true,
+          }}
+        />
+        <Stack.Screen 
+          name="AddTask" 
+          component={DataScreen}
+          options={{ 
+            title: 'Nueva Tarea',
+            headerBackTitle: 'Volver',
+          }}
+        />
+        <Stack.Screen 
+          name="EditTask" 
+          component={DataScreen}
+          options={{ 
+            title: 'Editar Tarea',
+            headerBackTitle: 'Volver',
+          }}
+        />
       </Stack.Navigator>
     </RealmProvider>
   );
