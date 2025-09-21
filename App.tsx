@@ -6,15 +6,15 @@
  */
 
 import Navigator from './src/navigation/Navigator';
+import { RootStackParamList } from './src/types/navigation';
 
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { View } from 'react-native';
 import { Text } from 'react-native';
-import { createStackNavigator } from '@react-navigation/stack';
-import { useState } from 'react';
+import { createStackNavigator, StackNavigationProp } from '@react-navigation/stack';
 
 const HomeScreen = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<StackNavigationProp<RootStackParamList, 'Home'>>();
   return (
     <View>
       <Text onPress={() => navigation.navigate('Profile', { name: 'CustomCheckbox' })}>Home</Text>
@@ -23,13 +23,13 @@ const HomeScreen = () => {
 };
 
 function App() {
-  const Stack = createStackNavigator();
+  const Stack = createStackNavigator<RootStackParamList>();
   return (
     <NavigationContainer>
       <Stack.Navigator>
-      <Stack.Screen name="Home" component={HomeScreen} />
-      <Stack.Screen name="Profile" component={Navigator} />
-    </Stack.Navigator>    
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Profile" component={Navigator} />
+      </Stack.Navigator>    
     </NavigationContainer>
   );
 }
