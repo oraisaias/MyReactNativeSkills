@@ -1,6 +1,7 @@
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import React, { useState } from 'react';
 import messaging from '@react-native-firebase/messaging';
+import notifee from '@notifee/react-native';
 
 const PushNotifications = () => {
 
@@ -26,6 +27,12 @@ const PushNotifications = () => {
     console.log('Token:', token);
     setToken(token);
   }
+  const testLocalNotification = async () => {
+    await notifee.displayNotification({
+      title: 'Notificación local',
+      body: 'Esta es una notificación local',
+    });
+  }
   return (
     <View style={styles.container}>
         <Text>Estado de los permisos: {authorizationStatus}</Text>
@@ -34,6 +41,9 @@ const PushNotifications = () => {
       </TouchableOpacity>
       <TouchableOpacity onPress={getToken} style={styles.button}>
         <Text style={styles.buttonText}>Obtener token</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={testLocalNotification} style={styles.button}>
+        <Text style={styles.buttonText}>Probar notificación local</Text>
       </TouchableOpacity>
       <Text>Token: {token}</Text>
       <Text>PushNotifications</Text>
