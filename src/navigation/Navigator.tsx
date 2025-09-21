@@ -5,14 +5,16 @@
  * @format
  */
 
-import { useRoute } from '@react-navigation/native';
+import { useRoute, RouteProp } from '@react-navigation/native';
 import CustomCheckbox from '../projects/CustomCheckbox/CustomCheckbox';
+import { RootStackParamList } from '../types/navigation';
 
 function Navigator() {
-  const route = useRoute();
+  const route = useRoute<RouteProp<RootStackParamList, 'Profile'>>();
   if (route.params?.name === 'CustomCheckbox') {
     return <CustomCheckbox />;
   }
+  return null;
 }
 
 export default Navigator;
