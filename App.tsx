@@ -30,6 +30,9 @@ const HomeScreen = () => {
       >
         CustomCheckbox
       </Text>
+      <Text style={styles.item} onPress={() => navigation.navigate('Navigator', { name: 'SqliteStorage' })}>
+        SqliteStorage
+      </Text>
     </View>
   );
 };
