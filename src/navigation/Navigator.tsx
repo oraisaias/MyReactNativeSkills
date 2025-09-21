@@ -5,10 +5,12 @@
  * @format
  */
 
+import { useRoute } from '@react-navigation/native';
 import CustomCheckbox from '../projects/CustomCheckbox/CustomCheckbox';
 
-function Navigator({ actual }: { actual: string }) {
-  if (actual === 'CustomCheckbox') {
+function Navigator() {
+  const route = useRoute();
+  if (route.params?.name === 'CustomCheckbox') {
     return <CustomCheckbox />;
   }
 }
