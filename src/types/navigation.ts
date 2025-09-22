@@ -14,4 +14,5 @@ export type EverySingleComponentStackParamList = {
   Home: undefined;
   ActivityIndicator: undefined;
   FlatList: undefined;
+  TextInput: undefined;
 };

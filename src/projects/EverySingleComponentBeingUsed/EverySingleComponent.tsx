@@ -16,6 +16,10 @@ const EverySingleComponent = () => {
         title="FlatList"
         onPress={() => navigation.navigate('FlatList')}
       />
+      <Button
+        title="TextInput"
+        onPress={() => navigation.navigate('TextInput')}
+      />
     </View>
   )
 }
