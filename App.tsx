@@ -30,6 +30,14 @@ const HomeScreen = () => {
       >
         CustomCheckbox
       </Text>
+      <Text
+        style={styles.item}
+        onPress={() =>
+          navigation.navigate('Navigator', { name: 'StunningNumberAnimation' })
+        }
+      >
+        StunningNumberAnimation
+      </Text>
     </View>
   );
 };
