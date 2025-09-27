@@ -3,72 +3,47 @@ import {
   Text,
   StyleSheet,
   TouchableOpacity,
-  Animated,
   Easing,
 } from 'react-native';
-import React, { useRef, useState, useEffect } from 'react';
+import React, {  useState } from 'react';
+import Animated, { useAnimatedStyle, useDerivedValue, useSharedValue, withSpring, withTiming } from 'react-native-reanimated';
+import { runOnJS } from 'react-native-worklets';
 
 const StunningNumber = () => {
-  const animatedValue = useRef(new Animated.Value(0)).current;
-  const scale = useRef(new Animated.Value(0)).current;
-  const opacity = useRef(new Animated.Value(1)).current;
-  const [targetValue, setTargetValue] = useState(0);
+  const animatedValue = useSharedValue(0);
+  const scale = useSharedValue(0);
+  const opacity = useSharedValue(1);
+
   const [displayNumber, setDisplayNumber] = useState(0);
 
-  useEffect(() => {
-    animatedValue.addListener(({ value }) => {
-      setDisplayNumber(Math.round(value));
-    });
-    return () => {
-      animatedValue.removeAllListeners();
-      animatedValue.stopAnimation();
-    };
-  }, [animatedValue]);
+  useDerivedValue(() => {
+    runOnJS(setDisplayNumber)(Math.round(animatedValue.value));
+  },[animatedValue]);
 
+  const animatedStyle = useAnimatedStyle(() => {
+    return {
+      transform: [{ scale: scale.value }],
+      opacity: opacity.value,
+    };
+  });
   const animatedToValue = (newValue: number) => {
-    Animated.sequence([
-      Animated.parallel([
-        Animated.timing(scale, {
-          toValue: 0.2,
-          duration: 100,
-          useNativeDriver: true,
-        }),
-        Animated.timing(opacity, {
-          toValue: 0.2,
-          duration: 100,
-          useNativeDriver: true,
-        }),
-      ]),
-      Animated.parallel([
-        Animated.spring(scale, {
-          toValue: 1,
-          friction: 3,
-          useNativeDriver: true,
-        }),
-        Animated.timing(opacity, {
-          toValue: 1,
-          duration: 200,
-          useNativeDriver: true,
-        }),
-        Animated.timing(animatedValue, {
-          toValue: newValue,
-          duration: 1500,
-          easing: Easing.out(Easing.exp),
-          useNativeDriver: false,
-        }),
-      ]),
-    ]).start();
-    setTargetValue(newValue);
+    scale.value = withTiming(1.2,{duration:100},()=>{
+      scale.value = withSpring(1,{damping:3});
+    });
+    opacity.value = withTiming(0.7,{duration:100},()=>{
+      opacity.value = withTiming(1,{duration:200});
+    });
+    animatedValue.value = withTiming(newValue, {duration:1500});
   };
 
-  const handleIncrement = () => animatedToValue(targetValue + 10);
+  const handleIncrement = () => animatedToValue(animatedValue.value + 10);
 
-  const handleDecrement = () => animatedToValue(Math.max(targetValue - 10, 0));
+  const handleDecrement = () => animatedToValue(Math.max(animatedValue.value - 10, 0));
 
   return (
     <View style={styles.container}>
       <Animated.Text
-        style={[styles.numberText, { transform: [{ scale: scale }], opacity: opacity }]}
+        style={[styles.numberText, animatedStyle]}
       >
         {displayNumber}
       </Animated.Text>
